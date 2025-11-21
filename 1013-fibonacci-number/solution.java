@@ -7,13 +7,13 @@ class Solution {
         return n;
        }
        else{
-          for(int i = 2; i<=n ;i++){
-         sum = a+b;
-         a=b;
-         b=sum;
-       }
+         for(int i=2 ; i<=n ;i++){
+            sum = a+b;
+           a=b;
+           b=sum;
+            
+         }
        }
        return sum;
-       
     }
 }
