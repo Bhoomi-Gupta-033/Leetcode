@@ -1,19 +1,27 @@
 class Solution {
     public int alternateDigitSum(int n) {
-        String s = Integer.toString(n);
-        int sum =0;
-        for(int i = 0; i<s.length(); i++){
-            char ch = s.charAt(i);
-            int num = ch - '0';
-            System.out.println(num);
-            if(i%2 != 0){
-                 num = -num;
-                 sum = sum + num;
-            }
-            else{
-              sum = sum +num;
-            }
-        }
-       return sum;
+       int sum = 0;
+    int count = 0;
+    int dummy = n;
+
+     while(n != 0){
+         count  = count + 1;
+         n = n/10;
+     }
+
+     while( dummy != 0){
+         int rem = dummy%10;
+         if(count %2 == 0){
+            sum = sum - rem;
+            count--;
+         }
+         else{
+            sum = sum + rem;
+            count--;
+         }
+         dummy = dummy/10;
+     }
+      return (sum);
+        
     }
 }
