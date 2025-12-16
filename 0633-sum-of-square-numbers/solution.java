@@ -1,23 +1,19 @@
 class Solution {
     public boolean judgeSquareSum(int c) {
-        if(c == 1 || c ==0){
-            return true;
-        }
-       long s = 0;
-       long e = (long)Math.sqrt(c);
+        long a =0;
+      long b = 0;
 
-       while(s<=e){
-          long ans = s*s + e*e;
-          if(ans == c){
-            return true;
-          }
-          else if(ans > c){
-            e= e-1;
-          }
-          else if(ans < c){
-            s =s+1;
-          }
+      while( a*a <=c - b*b){
+        a++;
+      }
+      for(long i =0; i<=a ;i++){
+       long ans = c- i*i;
+       double f = Math.pow(ans, 0.5);
+
+       if(f == (int)f){
+       return true;
        }
-         return false;   
-    }
+      }
+      return false;
+}
 }
