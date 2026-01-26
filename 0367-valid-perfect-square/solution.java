@@ -1,10 +1,27 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
-        double n = Math.sqrt(num);
+       
+       long low = 1;
+       long high = num;
 
-         if(n == (int)n){
+       if(num == 1){
+        return true;
+       }
+
+       while( low<high){
+
+        long mid = (low+high)/2;
+        long sqrt = mid *mid;
+        if(sqrt == num){
             return true;
-         }
-         return false;
+        }
+        else if(sqrt < num){
+            low = mid +1;
+        }
+        else{
+            high = mid ;
+        }
+       }
+       return false;
 }
 }
