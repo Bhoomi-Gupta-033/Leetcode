@@ -1,27 +1,23 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
-       
-       long low = 1;
+       if(num == 1) return true;
+
+       long low = 0;
        long high = num;
 
-       if(num == 1){
-        return true;
-       }
+       while(low < high){
+        long mid = (low+ high)/2;
 
-       while( low<high){
-
-        long mid = (low+high)/2;
-        long sqrt = mid *mid;
-        if(sqrt == num){
+        if( mid*mid == num){
             return true;
         }
-        else if(sqrt < num){
-            low = mid +1;
+        else if( mid * mid < num){
+            low = mid+1;
         }
         else{
-            high = mid ;
+            high = mid;
         }
        }
-       return false;
+      return false;
 }
 }
