@@ -1,17 +1,17 @@
 class Solution {
     public char repeatedCharacter(String s) {
-
+        
+        int n = s.length();
         HashSet<Character> set = new HashSet<>();
-           
-           for(int i = 0; i<s.length(); i++){
-             char ch = s.charAt(i);
-             if(set.contains(ch)){
-                return ch;
-             }else{
-                set.add(ch);
-             }
-           }
 
-          return s.charAt(0);
+        for(int i =0; i<n; i++){
+            if(set.contains(s.charAt(i))){
+                return s.charAt(i);
+            }else{
+                set.add(s.charAt(i));
+            }
+        }
+
+        return s.charAt(0);
     }
 }
