@@ -1,17 +1,13 @@
 class Solution {
     public int countDigits(int num) {
-        if( num <10){
-            return 1;
-        }
-
+        int temp = num;
         int count = 0;
-        int dummy = num;
-        while( num != 0 ){
-            int rem = num %10;
-            if(dummy %rem == 0){
+        while (temp != 0) {
+            int rem = temp % 10;
+            if (num % rem == 0) {
                 count++;
             }
-            num = num /10;
+            temp /= 10;
         }
 
         return count;
