@@ -1,26 +1,23 @@
 class Solution {
     public char kthCharacter(int k) {
-         String word = "a";
+        String word = "a";
 
-    while (word.length() < k) {
-      String str = ""; 
+        while(word.length() <= k){
+            String str = "";
 
-      for (int i = 0; i < word.length(); i++) {
-        char ch = word.charAt(i);
+            for(int i =0; i<word.length(); i++){
+                char ch = word.charAt(i);
 
-        if (ch != 'z') {
-          ch = (char) (ch + 1);
-          str = str + ch;
-        } else {
-          str = str + 'a';
+                if(ch != 'z'){
+                    str+=(char)(ch+1);
+                }else{
+                    str+='a';
+                }
+            }
+
+            word = word + str;
         }
-      }
-
-      word = word + str; 
-    }
-
-    
-
-    return word.charAt(k-1);
+        
+        return word.charAt(k-1);
     }
 }
