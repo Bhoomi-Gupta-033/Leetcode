@@ -1,28 +1,32 @@
 class Solution {
     public String reverseOnlyLetters(String s) {
-        String rev = "";
-      int n = s.length()-1;
-       
-      for (int i = n; i >=0 ; i--) {
-          char ch = s.charAt(i);
-          if(((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))){
-             rev = rev + ch;
-          }
-      }
+        int n = s.length();
+        char[] arr = s.toCharArray();
+        int low = 0;
+        int high = n - 1;
 
+        while (low < high) {
+            char ch1 = arr[low];
+            char ch2 = arr[high];
+            if (Character.isLetter(ch1) && Character.isLetter(ch2)) {
+                char temp = arr[low];
+                arr[low] = arr[high];
+                arr[high] = temp;
+                low++;
+                high--;
+            } else if (!Character.isLetter(ch1)) {
+                low++;
+            } else if (!Character.isLetter(ch2)) {
+                high--;
+            }
+        }
 
-        int idx =0;
-        String res = "";
-      for(int i = 0; i<s.length() ;i++){
-        char ch = s.charAt(i);
-        if(!((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))){
-           res = res + ch;
+        String str = "";
+
+        for (int i = 0; i < n; i++) {
+            str += arr[i];
         }
-        else{
-          res = res + rev.charAt(idx);
-          idx = idx +1;
-        }
-      }
-      return res;
+
+        return str;
     }
 }
