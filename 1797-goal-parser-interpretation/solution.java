@@ -1,22 +1,19 @@
 class Solution {
     public String interpret(String command) {
-       String s = "";
-        for(int i=0; i<command.length();i++){
-            char sh = command.charAt(i);
-            if(sh == 'G'){
-                s = s + "G";
-            }
-            else if(sh == '('){
-                if(command.charAt(i+1) == ')'){
-                     s = s + "o";
-                }     
-                else{
-                  s = s + "al";
-            }           
-            }
-            
+        String ans = "";
 
+        for(int i=0; i<command.length();i++){
+           char ch = command.charAt(i);
+
+           if(ch == 'G'){
+              ans+=ch;
+           }else if(ch == '(' && command.charAt(i+1) == ')'){
+              ans+='o';
+           }else if(ch == '(' && command.charAt(i+1) == 'a'){
+            ans+="al";
+           }
         }
-        return s;
+
+        return ans;
     }
 }
