@@ -1,18 +1,19 @@
 class Solution {
     public int findNumbers(int[] nums) {
-        int count = 0;
-        for(int i =0 ; i<nums.length ; i++){
-            int n = nums[i];
+        int n = nums.length;
+        int count= 0;
 
-            int countDigits = 0;
-            while(n !=0){
-                countDigits++;
-                n = n/10;
-            }
+        for(int i =0 ;i<n; i++){
+           int a =nums[i];
+           int digit = 0; 
+           while(a != 0){
+            digit++;
+            a = a/10;
+           }
 
-            if(countDigits%2 == 0){
-                count++;
-            }
+           if(digit%2 == 0){
+            count++;
+           }
         }
 
         return count;
