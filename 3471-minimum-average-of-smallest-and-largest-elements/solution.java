@@ -1,20 +1,22 @@
 class Solution {
     public double minimumAverage(int[] nums) {
-       Arrays.sort(nums);
-        double[] ans = new double[nums.length/2];
-       int low = 0;
-       int high = nums.length -1;
-        int j = 0;
-       while(low < high){
-        double avg = (nums[low] + nums[high])/2.0;
-         ans[j] = avg;
-         j++;
-         low++;
-         high--;
-       }
-       Arrays.sort(ans);
+        int n = nums.length;
+        double[] ans = new double[n/2];
 
-       return ans[0];
+        Arrays.sort(nums);
 
-  }
+        int low = 0; 
+        int high = n-1;
+        int i = 0;
+        while(low < high){
+          double average =(nums[low] + nums[high])/2.0;
+          ans[i] = average;
+          i++;
+          low++;
+          high--;
+        }
+
+        Arrays.sort(ans);
+        return ans[0];
+    }
 }
