@@ -2,29 +2,29 @@ class Solution {
     public boolean judgeCircle(String moves) {
         int countR = 0;
         int countL = 0;
+
         int countU = 0;
         int countD = 0;
 
-        for(int i =0 ; i<moves.length(); i++){
-            if(moves.charAt(i)== 'R'){
-                countR++;
+        for(int i =0 ;i<moves.length(); i++){
+            char ch = moves.charAt(i);
+
+            if(ch == 'L') {
+                countL++;
+            }else if(ch == 'R'){
+              countR++;
+            }else if(ch == 'U'){
+               countU++; 
+            }else if(ch == 'D'){
+                countD++;
             }
-            else if(moves.charAt(i)== 'L'){
-              countL++;
-            }
-            else if(moves.charAt(i)== 'U'){
-              countU++;
-            }
-            else if(moves.charAt(i)== 'D'){
-              countD++;
-            }
+        
         }
 
-        if(countR == countL && countU == countD){
+        if(countL == countR && countU == countD){
             return true;
         }
-        else{
-            return false;
-        }
-}
+
+        return false;
+    }
 }
