@@ -25,11 +25,6 @@ class Solution {
         return li;
     }
     public boolean isValidBST(TreeNode root) {
-        // while(root != null){
-        //     if(root.val >= Integer.MIN_VALUE && root.val <= Integer){
-        //         root = root.left;
-        //     }
-        // }
 
         inOrder(root);
 
@@ -38,5 +33,6 @@ class Solution {
         }
 
         return true;
-    }
 }
+}
+
