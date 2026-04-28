@@ -14,28 +14,22 @@
  * }
  */
 class Solution {
-    public int leftDigit(TreeNode root , int ans){
-          if(root == null) return 0;
-          if(root.left == null && root.right == null){
-            return ans *10 + root.val;
-          }
-          
-         int left =  leftDigit(root.left , ans *10 + root.val);
-          int right = leftDigit(root.right , ans *10 + root.val);
-             
-          return left +right;
-    }
+   int sum = 0;
+   public int Digit(TreeNode root , int ans){
+
+       if(root == null) return 0;
+       if(root.left == null && root.right == null){
+            sum+=ans*10+root.val;
+        }
+       
+       int left = Digit(root.left , ans*10+root.val);
+       int right = Digit(root.right , ans*10+root.val);
+
+       return sum;
+   }
 
     public int sumNumbers(TreeNode root) {
-         
-          return leftDigit(root , 0);
-        //   rightDigit(root);
+         return Digit(root , 0);
            
-        //    if(root.left != null && root.right != null){
-        //     //   sumNumbers(root.left);
-        //       sumNumbers(root.right);
-        //    }
-         
-        // return left ;
     }
 }
