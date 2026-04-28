@@ -14,19 +14,9 @@
  * }
  */
 class Solution {
-    //  public static boolean divideTree(TreeNode p  , TreeNode q){
-    //     // if(p == null && q == null) return true;
-    //     // if(p == null || q == null) return false;
-    //     // if(p.val != q.val) return false;
-
-    //     TreeNode left = divideTree(p.left , q.right);
-    //     TreeNode right = divideTree(p.right , q.left);
-
-    //      left = right
-    // }
 
     public TreeNode invertTree(TreeNode root) {
-         if(root == null) return root;
+         if(root == null) return null;
 
          TreeNode temp = root.left;
          root.left = root.right;
@@ -35,8 +25,6 @@ class Solution {
          invertTree(root.left);
          invertTree(root.right);
 
-        
-
-        return root;
+         return root;
     }
 }
