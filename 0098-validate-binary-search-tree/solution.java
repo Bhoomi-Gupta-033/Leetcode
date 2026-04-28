@@ -25,14 +25,13 @@ class Solution {
         return li;
     }
     public boolean isValidBST(TreeNode root) {
+       inOrder(root);
 
-        inOrder(root);
+       for(int i = 0 ; i<li.size()-1; i++){
+          if(li.get(i) >= li.get(i+1)) return false;
+       }
 
-        for(int i=0; i<li.size()-1; i++){
-            if(li.get(i+1) <= li.get(i)) return false;
-        }
-
-        return true;
-}
+       return true; 
+  }
 }
 
