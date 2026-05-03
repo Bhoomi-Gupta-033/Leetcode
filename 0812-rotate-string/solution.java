@@ -1,6 +1,6 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
-           if(s.length() != goal.length()) {
+        if(s.length() != goal.length()) {
             return false;
            }
            else{
@@ -8,6 +8,4 @@ class Solution {
             return n.contains(s);
            }
     }
-
-   
 }
