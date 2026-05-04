@@ -1,6 +1,5 @@
 class Solution {
     public void rotate(int[][] matrix) {
-
         int row = matrix.length; 
         int col = matrix[0].length;
 
@@ -23,7 +22,6 @@ class Solution {
                  matrix[i][j] = ans2[i][j];
             }
         }
-
 
     }
 }
