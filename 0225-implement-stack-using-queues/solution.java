@@ -3,27 +3,51 @@ class MyStack {
    Queue<Integer> queue;
 
     public MyStack() {
-        queue = new LinkedList<>();
+       queue = new LinkedList<>();
     }
 
     public void push(int x) {
-
         queue.add(x);
-
-        // rotate queue to make last element first
-        int size = queue.size();
-
-        for (int i = 0; i < size - 1; i++) {
-            queue.add(queue.remove());
-        }
+        
     }
 
     public int pop() {
-        return queue.remove();
+       Queue<Integer> q2 = new LinkedList<>();
+
+         int n = queue.size();
+
+         for(int i = n; i>1; i--){
+            q2.add(queue.remove());
+         }  
+
+         int val = queue.remove();
+
+         for(int i = 1 ; i<n; i++){
+              queue.add(q2.remove()) ;
+         }
+
+         return val;
+
     }
 
     public int top() {
-        return queue.peek();
+       Queue<Integer> q2 = new LinkedList<>();
+
+         int n = queue.size();
+
+         for(int i = n; i>1; i--){
+            q2.add(queue.remove());
+         }  
+
+         int val = queue.remove();
+
+         for(int i = 1 ; i<n; i++){
+              queue.add(q2.remove()) ;
+         }
+          
+          queue.add(val);
+
+         return val;
     }
 
     public boolean empty() {
