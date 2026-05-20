@@ -9,32 +9,31 @@
  * }
  */
 class Solution {
+    ListNode dummy = new ListNode(0);
+    ListNode res = dummy;
+
+    public void helper(int a){
+        res.next = new ListNode(a);
+        res = res.next;
+    }
     public ListNode partition(ListNode head, int x) {
-        ListNode smallerDummy = new ListNode(0);
-        ListNode greaterDummy = new ListNode(0);
+        ListNode temp = head;
 
-        ListNode smaller = smallerDummy;
-        ListNode greater = greaterDummy;
-
-        while (head != null) {
-
-            if (head.val < x) {
-                smaller.next = head;
-                smaller = smaller.next;
-            } else {
-                greater.next = head;
-                greater = greater.next;
+        while(temp != null){
+            if(temp.val < x){
+                helper(temp.val);
             }
-
-            head = head.next;
+            temp = temp.next;
         }
 
-        // End second list
-        greater.next = null;
+        temp = head;
+        while(temp != null){
+            if(temp.val >= x){
+                helper(temp.val);
+            }
+            temp = temp.next;
+        }
 
-        // Connect both lists
-        smaller.next = greaterDummy.next;
-
-        return smallerDummy.next;
+        return dummy.next;
     }
 }
