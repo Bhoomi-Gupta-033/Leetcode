@@ -9,19 +9,19 @@
  * }
  */
 class Solution {
+    ListNode dummy = new ListNode(0);
+    ListNode res = dummy;
+    public void helper(int x){
+        res.next = new ListNode(x);
+        res = res.next;
+    }
     public ListNode removeElements(ListNode head, int val) {
-         ListNode dummy = new ListNode(0);
-        dummy.next = head;
-
-        ListNode current = dummy;
-
-        while (current.next != null) {
-
-            if (current.next.val == val) {
-                current.next = current.next.next;
-            } else {
-                current = current.next;
+        ListNode temp =  head;
+        while(temp != null){
+            if(temp.val != val){
+                helper(temp.val);
             }
+            temp = temp.next;
         }
 
         return dummy.next;
