@@ -14,26 +14,22 @@
  * }
  */
 class Solution {
-        
-        int count = 0;
-    public int helper(TreeNode root , int max ){
-       
-      if(root == null) return 0;
-
-        if(root.val >= max){
-            count++;
+    int count = 0;
+    public int check(TreeNode root , int max){
+        if(root == null) return 0;
+           if(root.val >= max){
             max = root.val;
-        }
-           
-           helper(root.left , max);
-        helper(root.right , max);
-         
-         return count;
+            count++;
+           }
+            check(root.left , max);
+            check (root.right , max);
+           return count;
     }
-    
+        
     public int goodNodes(TreeNode root) {
-        int max = root.val;
-        return helper(root , max);
-       
+ 
+       int max = root.val; 
+           return check(root , max); 
     }
+
 }
