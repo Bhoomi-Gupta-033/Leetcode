@@ -14,24 +14,22 @@
  * }
  */
 class Solution {
-    ArrayList<Integer> li = new ArrayList<>();
-    public List<Integer> inorder(TreeNode root){
-        if(root != null){
-            inorder(root.left);
-            li.add(root.val);
-            inorder(root.right);
+    int minDiff = Integer.MAX_VALUE;
+    TreeNode prev = null;
+    private void inorder(TreeNode root) {
+        if (root == null) return;
+
+        inorder(root.left);
+
+        if (prev != null) {
+            minDiff = Math.min(minDiff, root.val - prev.val);
         }
-        
-        return li;
+        prev = root;
+
+        inorder(root.right);
     }
     public int getMinimumDifference(TreeNode root) {
         inorder(root);
-        int min = Integer.MAX_VALUE;
-        for(int i =0; i<li.size()-1; i++){
-           int diff = li.get(i+1) - li.get(i);
-           min = Math.min(diff , min);
-        }
-
-        return min;
+        return minDiff;
     }
 }
