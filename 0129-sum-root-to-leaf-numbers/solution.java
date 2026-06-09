@@ -9,11 +9,9 @@
  *     TreeNode(int val, TreeNode left, TreeNode right) {
  *         this.val = val;
  *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
+ *         this.right = right;**/
+
+     class Solution {
    int sum = 0;
    public int Digit(TreeNode root , int ans){
 
@@ -32,4 +30,4 @@ class Solution {
          return Digit(root , 0);
            
     }
-}
+     }
