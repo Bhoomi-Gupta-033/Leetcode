@@ -8,8 +8,8 @@ class Solution {
     }
 
     public void backtrack(List<List<Integer>> fl ,List<Integer> currList , int[]nums , int start){
-        
-        if(!fl.contains(new ArrayList<>(currList))){
+
+             if(!fl.contains(new ArrayList<>(currList))){
             fl.add(new ArrayList<>(currList));
         }
 
@@ -17,6 +17,7 @@ class Solution {
             currList.add(nums[i]);
            backtrack(fl, new ArrayList<>(currList), nums, i+1);
            currList.remove(currList.size()-1);
-        }
+        } 
+           
     }
 }
