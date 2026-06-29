@@ -1,0 +1,51 @@
+class Solution {
+    public int maxSumMinProduct(int[] nums) {
+         int n = nums.length;
+
+        long[] prefix = new long[n + 1];
+        for (int i = 0; i < n; i++) {
+            prefix[i + 1] = prefix[i] + nums[i];
+        }
+
+        int[] left = new int[n];
+        int[] right = new int[n];
+
+        Stack<Integer> st = new Stack<>();
+
+        // Previous Smaller
+        for (int i = 0; i < n; i++) {
+            while (!st.isEmpty() && nums[st.peek()] >= nums[i]) {
+                st.pop();
+            }
+
+            left[i] = st.isEmpty() ? -1 : st.peek();
+            st.push(i);
+        }
+
+        st.clear();
+
+        // Next Smaller
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.isEmpty() && nums[st.peek()] >= nums[i]) {
+                st.pop();
+            }
+
+            right[i] = st.isEmpty() ? n : st.peek();
+            st.push(i);
+        }
+
+        long ans = 0;
+
+        for (int i = 0; i < n; i++) {
+            int l = left[i] + 1;
+            int r = right[i] - 1;
+
+            long sum = prefix[r + 1] - prefix[l];
+            long product = sum * nums[i];
+
+            ans = Math.max(ans, product);
+        }
+
+        return (int)(ans % 1_000_000_007);
+    }
+}
